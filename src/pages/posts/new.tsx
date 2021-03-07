@@ -3,6 +3,7 @@ import React from "react";
 import { usePostForm } from "../../utils/hooks/usePostForm";
 // import components
 import { EditorForm } from "../../components/Editors/Form";
+import { EditorResult } from "../../components/Editors/Result";
 // import styles
 import { COLOR } from "../../styles";
 
@@ -15,7 +16,9 @@ const PostNew = () => {
         <div className="Editor__Wrapper">
           <EditorForm onChange={onChange} />
         </div>
-        <div className="Result__Wrapper"></div>
+        <div className="Result__Wrapper">
+          <EditorResult content={content} />
+        </div>
       </div>
       <style jsx>{`
         .Container {
