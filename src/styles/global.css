@@ -3,6 +3,7 @@ body {
 }
 
 textarea,
+button,
 input:focus {
   outline: none;
   border: none;

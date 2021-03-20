@@ -1,17 +1,27 @@
 import React from "react";
+// import apis
+import { requestPostMemo } from "../../apis/memo/requestPostMemo";
 // import hooks
-import { usePostForm } from "../../utils/hooks/usePostForm";
+import { useMemoForm } from "../../utils/hooks/useMemoForm";
 // import components
 import { EditorForm } from "../../components/Editors/Form";
 import { EditorResult } from "../../components/Editors/Result";
+import { EditorHeader } from "../../components/Editors/Header";
 // import styles
 import { COLOR } from "../../styles";
 
-const PostNew = () => {
-  const { content, onChange } = usePostForm();
+const MemoNew = () => {
+  const { content, onChange } = useMemoForm();
+
+  const submitHandler = async () => {
+    const { payload, error } = await requestPostMemo(content);
+    console.log(payload);
+    console.log(error);
+  };
 
   return (
     <div className="Container">
+      <EditorHeader onSubmit={submitHandler} />
       <div className="Wrapper">
         <div className="Editor__Wrapper">
           <EditorForm onChange={onChange} />
@@ -27,6 +37,7 @@ const PostNew = () => {
           display: flex;
           width: 100%;
           height: 100vh;
+          margin-top: 50px;
         }
         .Editor__Wrapper {
           width: 50%;
@@ -40,4 +51,4 @@ const PostNew = () => {
   );
 };
 
-export default PostNew;
+export default MemoNew;

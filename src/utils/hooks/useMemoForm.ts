@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-export const usePostForm = () => {
+export const useMemoForm = () => {
   const [content, setContent] = useState("");
 
   const contentChangeHandler = useCallback(
