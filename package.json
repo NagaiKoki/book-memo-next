@@ -12,6 +12,7 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "dotenv": "^8.2.0",
+    "dotenv-webpack": "^7.0.2",
     "firebase": "^8.2.10",
     "framer-motion": "^3.10.0",
     "next": "latest",

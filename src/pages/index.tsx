@@ -1,15 +1,5 @@
 import Link from "next/link";
-import Layout from "../components/Layout";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/posts">
-        <a>post form</a>
-      </Link>
-    </p>
-  </Layout>
-);
+const IndexPage = () => <div>hoge</div>;
 
 export default IndexPage;
