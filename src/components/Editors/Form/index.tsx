@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useEffect, useCallback, useRef } from "react";
 import { COLOR } from "../../../styles";
 
 type Props = {
@@ -8,7 +8,14 @@ type Props = {
 
 export const EditorForm: React.FC<Props> = React.memo(
   ({ onChangeTitle, onChangeContent }) => {
+    const inputRef = useRef<HTMLInputElement>(null);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    useEffect(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, []);
 
     const inputKeyPressHandler = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -16,12 +23,13 @@ export const EditorForm: React.FC<Props> = React.memo(
           textareaRef.current.focus();
         }
       },
-      [textareaRef]
+      []
     );
 
     return (
       <div>
         <input
+          ref={inputRef}
           name="form"
           className="Form Title__Form"
           onChange={(e) => onChangeTitle(e.target.value)}
