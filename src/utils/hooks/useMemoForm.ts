@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 
 export const useMemoForm = () => {
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const contentChangeHandler = useCallback(
@@ -10,8 +11,14 @@ export const useMemoForm = () => {
     [content]
   );
 
+  const titleChangeHandler = useCallback((text: string) => {
+    setTitle(text);
+  }, []);
+
   return {
+    title,
     content,
-    onChange: contentChangeHandler,
+    onChangeContent: contentChangeHandler,
+    onChangeTitle: titleChangeHandler,
   };
 };

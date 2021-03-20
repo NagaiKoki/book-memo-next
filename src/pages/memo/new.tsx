@@ -11,12 +11,10 @@ import { EditorHeader } from "../../components/Editors/Header";
 import { COLOR } from "../../styles";
 
 const MemoNew = () => {
-  const { content, onChange } = useMemoForm();
+  const { title, content, onChangeContent, onChangeTitle } = useMemoForm();
 
   const submitHandler = async () => {
     const { payload, error } = await requestPostMemo(content);
-    console.log(payload);
-    console.log(error);
   };
 
   return (
@@ -24,10 +22,13 @@ const MemoNew = () => {
       <EditorHeader onSubmit={submitHandler} />
       <div className="Wrapper">
         <div className="Editor__Wrapper">
-          <EditorForm onChange={onChange} />
+          <EditorForm
+            onChangeTitle={onChangeTitle}
+            onChangeContent={onChangeContent}
+          />
         </div>
         <div className="Result__Wrapper">
-          <EditorResult content={content} />
+          <EditorResult title={title} content={content} />
         </div>
       </div>
       <style jsx>{`
@@ -38,6 +39,7 @@ const MemoNew = () => {
           width: 100%;
           height: 100vh;
           margin-top: 50px;
+          padding-top: 10px;
         }
         .Editor__Wrapper {
           width: 50%;
